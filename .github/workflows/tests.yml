@@ -1,0 +1,37 @@
+name: tests
+
+# Formülü temiz bir Homebrew'de denetler, kurar ve `test do` bloğunu çalıştırır. Her formül güncellemesinde ve haftada bir
+# (yayımlanan arşivler değişmemiş ama Homebrew kuralları değişmiş olabilir) çalışır.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 5 * * 1"
+
+jobs:
+  formula:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, ubuntu-latest, ubuntu-24.04-arm]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Homebrew/actions/setup-homebrew@master
+      - name: Tap'i bu çalışma dizininden bağla
+        run: brew tap mburakmmm/nox "$GITHUB_WORKSPACE"
+      - name: Denetle
+        run: brew audit --strict mburakmmm/nox/noxc
+      - name: Kur
+        run: brew install mburakmmm/nox/noxc
+      - name: Formül testi
+        run: brew test mburakmmm/nox/noxc
+      - name: Kurulu ikili çalışıyor mu (sarmalayıcı, qbe, noxlsp)
+        run: |
+          noxc version
+          command -v noxlsp
+          printf 'print(6 * 7)\n' > hello.nox
+          test "$(noxc run hello.nox)" = "42"
+          test "$(noxc run --backend qbe hello.nox)" = "42"
