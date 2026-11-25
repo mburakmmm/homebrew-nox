@@ -7,19 +7,19 @@ class Noxc < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/mburakmmm/nox-lang/releases/download/v2.2.66/nox-lang-v2.2.66-macos-arm64.tar.gz"
-      sha256 "e0de1b48b5855582302d6a473a553975b122aae2c1377cef08a576895db9930f"
+      url "https://github.com/mburakmmm/nox-lang/releases/download/v2.2.70/nox-lang-v2.2.70-macos-arm64.tar.gz"
+      sha256 "0bcf719d1a5207e3470d8461f203b56ca086d04baaa2858cbdc6081ccebea7d1"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/mburakmmm/nox-lang/releases/download/v2.2.66/nox-lang-v2.2.66-linux-arm64.tar.gz"
-      sha256 "58a76a402d5c01b6b342345a6e82357b9eccc1e89fc97411483ce7310e18f751"
+      url "https://github.com/mburakmmm/nox-lang/releases/download/v2.2.70/nox-lang-v2.2.70-linux-arm64.tar.gz"
+      sha256 "b193478ba556125b3b8bb6b8ab56a6924aeeecbdd123c5819d2287c137d11bf6"
     end
     on_intel do
-      url "https://github.com/mburakmmm/nox-lang/releases/download/v2.2.66/nox-lang-v2.2.66-linux-x64.tar.gz"
-      sha256 "86b8f0e3d5748f0571265bde2326c694e5e76771e8fe42b8243bf1d9d6515b28"
+      url "https://github.com/mburakmmm/nox-lang/releases/download/v2.2.70/nox-lang-v2.2.70-linux-x64.tar.gz"
+      sha256 "1920366b080bffaaf8dabef6ed4a37cd1ad4230c5b96a3b0241cba6850427b76"
     end
   end
 
